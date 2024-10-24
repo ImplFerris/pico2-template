@@ -29,11 +29,11 @@ const LOW: u16 = 0;
 
 /// The maximum PWM value (i.e. LED brightness) we want
 const HIGH: u16 = 25000;
-{% endif %}
 
 /// External high-speed crystal on the Raspberry Pi Pico 2 board is 12 MHz.
 /// Adjust if your board has a different frequency
 const XTAL_FREQ_HZ: u32 = 12_000_000u32;
+{% endif %}
 
 {% if hal == "embassy" -%}
 #[embassy_executor::main]
