@@ -2,6 +2,7 @@
 #![no_main]
 
 {% if hal == "embassy" -%}
+use embassy_rp as hal;
 use embassy_executor::Spawner;
 use embassy_rp::block::ImageDef;
 use embassy_rp::gpio;
