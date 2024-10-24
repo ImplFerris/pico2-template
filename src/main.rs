@@ -121,6 +121,16 @@ fn main() -> ! {
 // This isn't needed, but it's recomended to have these minimal entries.
 #[link_section = ".bi_entries"]
 #[used]
+{% if hal == "embassy" -%}
+pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
+    embassy_rp::binary_info::rp_program_name!(c"Blinky Example"),
+    embassy_rp::binary_info::rp_program_description!(
+        c"This example tests the RP Pico on board LED, connected to gpio 25"
+    ),
+    embassy_rp::binary_info::rp_cargo_version!(),
+    embassy_rp::binary_info::rp_program_build_attribute!(),
+];
+{% else -%}
 pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
     hal::binary_info::rp_cargo_bin_name!(),
     hal::binary_info::rp_cargo_version!(),
@@ -128,5 +138,6 @@ pub static PICOTOOL_ENTRIES: [hal::binary_info::EntryAddr; 5] = [
     hal::binary_info::rp_cargo_homepage_url!(),
     hal::binary_info::rp_program_build_attribute!(),
 ];
+{% endif %}
 
 // End of file
