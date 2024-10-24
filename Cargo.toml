@@ -1,0 +1,37 @@
+[package]
+name = "{{project-name}}"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m = "0.7.6"
+cortex-m-rt = "0.7.0"
+
+{% if hal == "embassy" -%}
+embassy-executor = { git = "https://github.com/embassy-rs/embassy", version = "0.6.0", features = [
+  "arch-cortex-m",
+  "executor-thread",
+  "defmt",
+  "integrated-timers",
+] }
+defmt-rtt = "0.4"
+panic-probe = { version = "0.3" }
+embassy-time = { git = "https://github.com/embassy-rs/embassy", version = "0.3.2" }
+embassy-rp = { git = "https://github.com/embassy-rs/embassy", version = "0.2.0", features = [
+  "defmt",
+  "time-driver",
+  "critical-section-impl",
+  "rp235xa",
+  "binary-info",
+] }
+{% else -%}
+embedded-hal = "1.0.0"
+rp235x-hal = { git = "https://github.com/rp-rs/rp-hal", version = "0.2.0", features = [
+  "binary-info",
+  "critical-section-impl",
+  "rt",
+  "defmt",
+] }
+panic-halt = "0.2.0"
+rp-binary-info = "0.1.0"
+{% endif %}
