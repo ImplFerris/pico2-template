@@ -10,3 +10,8 @@ type = "string"
 prompt = "Which HAL?"
 choices = ["rp-hal", "embassy"]
 default = "rp-hal"
+
+[placeholders.defmt]
+type = "bool"
+prompt = "Enable defmt logging?"
+default = true

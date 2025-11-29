@@ -8,13 +8,19 @@ use embassy_rp::block::ImageDef;
 use embassy_rp::gpio;
 use embassy_time::Timer;
 use gpio::{Level, Output};
-use {defmt_rtt as _, panic_probe as _};
 {% else -%}
-use panic_halt as _;
 use rp235x_hal as hal;
 use hal::block::ImageDef;
 use embedded_hal::delay::DelayNs;
 use embedded_hal::pwm::SetDutyCycle;
+{% endif %}
+
+//Panic Handler
+use {panic_probe as _};
+
+{% if defmt -%}
+// Defmt Logging
+use defmt_rtt as _;
 {% endif %}
 
 /// Tell the Boot ROM about our application

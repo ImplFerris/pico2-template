@@ -29,8 +29,10 @@ rustflags = [
   "link-arg=--nmagic",
   "-C",
   "link-arg=-Tlink.x",
+  {% if defmt -%}
   "-C",
   "link-arg=-Tdefmt.x",
+  {% endif -%}
   "-C",
   "target-cpu=cortex-m33",
 ]
@@ -52,8 +54,10 @@ rustflags = [
   "link-arg=--nmagic",
   "-C",
   "link-arg=-Tlink.x",
+  {% if defmt -%}
   "-C",
   "link-arg=-Tdefmt.x",
+  {% endif -%}
 ]
 
 # Use picotool for loading.
