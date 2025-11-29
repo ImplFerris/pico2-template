@@ -24,7 +24,7 @@ use defmt_rtt as _;
 {% endif %}
 
 /// Tell the Boot ROM about our application
-#[link_section = ".start_block"]
+#[unsafe(link_section = ".start_block")]
 #[used]
 pub static IMAGE_DEF: ImageDef = hal::block::ImageDef::secure_exe();
 
@@ -125,7 +125,7 @@ fn main() -> ! {
 
 // Program metadata for `picotool info`.
 // This isn't needed, but it's recomended to have these minimal entries.
-#[link_section = ".bi_entries"]
+#[unsafe(link_section = ".bi_entries")]
 #[used]
 {% if hal == "embassy" -%}
 pub static PICOTOOL_ENTRIES: [embassy_rp::binary_info::EntryAddr; 4] = [
