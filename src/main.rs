@@ -30,7 +30,7 @@ const XTAL_FREQ_HZ: u32 = 12_000_000u32;
 {% if hal == "embassy" -%}
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
-    let peripherals = embassy_rp::init(Default::default());
+    let p = embassy_rp::init(Default::default());
 
     loop{
         Timer::after_millis(100).await;
