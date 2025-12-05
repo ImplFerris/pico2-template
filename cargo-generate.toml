@@ -9,7 +9,7 @@ pre = ["cargo-generate/prehook.rhai"]
 type = "string"
 prompt = "Which HAL?"
 choices = ["rp-hal", "embassy"]
-default = "rp-hal"
+default = "embassy"
 
 [placeholders.defmt]
 type = "bool"
