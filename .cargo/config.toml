@@ -5,6 +5,11 @@
 # writing programs for Raspberry Silicon microcontrollers.
 #
 
+[env]
+# for the defmt logging
+DEFMT_LOG = "debug"
+
+
 [build]
 # Set the default target to match the Cortex-M33 in the RP2350
 target = "thumbv8m.main-none-eabihf"
