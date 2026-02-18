@@ -1,5 +1,5 @@
 [default.general]
-chip = "RP2350"
+chip = "RP235x"
 
 [default.rtt]
 # Whether or not an RTTUI should be opened after flashing.
